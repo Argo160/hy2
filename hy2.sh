@@ -126,7 +126,7 @@ EOL
   final
 
 cd hy2
-screen -Sdm hysteria bash hysteria-linux-amd64 -c client.yaml 
+screen -Sdm hysteria ./hysteria-linux-amd64 -c client.yaml 
 }
 
 while true; do
