@@ -1,3 +1,10 @@
+first() {
+  clear
+  mkdir hy2
+  cd hy2
+  wget https://github.com/apernet/hysteria/releases/download/app%2Fv2.5.2/hysteria-linux-amd64
+  chmod 755 hysteria-linux-amd64  
+}
 Iran() {
   clear
   first
@@ -93,13 +100,7 @@ socks5:
   listen: 127.0.0.1:"$sport"
   final
 }
-first() {
-  clear
-  mkdir hy2
-  cd hy2
-  wget https://github.com/apernet/hysteria/releases/download/app%2Fv2.5.2/hysteria-linux-amd64
-  chmod 755 hysteria-linux-amd64  
-}
+
 final() {
   clear
 cat <<EOL > /etc/systemd/system/hy2.service
