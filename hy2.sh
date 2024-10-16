@@ -1,6 +1,6 @@
 first() {
   clear
-  mkdir hy2
+  mkdir -p hy2
   cd hy2
   wget https://github.com/apernet/hysteria/releases/download/app%2Fv2.5.2/hysteria-linux-amd64
   chmod 755 hysteria-linux-amd64  
