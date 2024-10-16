@@ -10,7 +10,6 @@ final() {
 cat <<EOL > /etc/systemd/system/hy2.service
 [Unit]
 After=network.target nss-lookup.target
-
 [Service]
 User=root
 WorkingDirectory=/root
@@ -21,7 +20,6 @@ ExecReload=/bin/kill -HUP $MAINPID
 Restart=always
 RestartSec=5
 LimitNOFILE=infinity
-
 [Install]
 WantedBy=multi-user.target
 EOL
