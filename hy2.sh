@@ -122,7 +122,7 @@ fastOpen: true
 lazy: true
 socks5:
   listen: 127.0.0.1:"$sport"
-EOL  
+EOL
   final
 }
 
