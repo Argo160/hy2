@@ -26,7 +26,6 @@ EOL
 systemctl daemon-reload
 systemctl enable hy2
 systemctl start hy2
-systemctl status hy2
 }
 Kharej() {
   clear
