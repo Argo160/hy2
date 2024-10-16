@@ -29,7 +29,6 @@ systemctl daemon-reload
 systemctl enable hy2
 systemctl start hy2
 systemctl status hy2
-EOL
 }
 Iran() {
   clear
@@ -50,7 +49,7 @@ obfs:
     password: "$obfspass"
 auth:
   type: password
-  password: $authpass"
+  password: "$authpass"
 quic:
   initStreamReceiveWindow: 8388608
   maxStreamReceiveWindow: 8388608
@@ -139,7 +138,7 @@ clear
     case $choice in
         1) Iran;;
         2) Kharej;;
-        3) echo "Exiting..." exit;;
+        3) echo "Exiting..."; exit;;
         *) echo "Invalid choice. Please enter a valid option.";;
     esac
 done
