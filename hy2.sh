@@ -44,10 +44,10 @@ tls:
 obfs:
   type: salamander
   salamander:
-    password: "$obfspass"
+    password: $obfspass
 auth:
   type: password
-  password: "$authpass"
+  password: $authpass
 quic:
   initStreamReceiveWindow: 8388608
   maxStreamReceiveWindow: 8388608
@@ -94,8 +94,8 @@ Iran() {
   read -p "Enter Socks5 port :" sport
   
 cat <<EOL > client.yaml
-server: "$ip:$port"
-auth: "$authpass"
+server: $ip:$port
+auth: $authpass
 transport:
   type: udp
   udp:
@@ -103,7 +103,7 @@ transport:
 obfs:
   type: salamander
   salamander:
-    password: "$obfspass"
+    password: $obfspass
 tls:
   sni: google.com 
   insecure: true 
@@ -121,7 +121,7 @@ quic:
 fastOpen: true
 lazy: true
 socks5:
-  listen: 127.0.0.1:"$sport"
+  listen: 127.0.0.1:$sport
 EOL
   final
 }
