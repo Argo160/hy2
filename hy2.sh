@@ -139,7 +139,7 @@ clear
     case $choice in
         1) Iran;;
         2) Kharej;;
-        3) echo "Exiting..."; exit;;
+        3) echo "Exiting..." exit;;
         *) echo "Invalid choice. Please enter a valid option.";;
     esac
 done
