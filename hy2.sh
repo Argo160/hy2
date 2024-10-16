@@ -28,7 +28,7 @@ systemctl enable hy2
 systemctl start hy2
 systemctl status hy2
 }
-Iran() {
+Kharej() {
   clear
   first
   openssl ecparam -genkey -name prime256v1 -out ca.key
@@ -84,7 +84,7 @@ EOL
 final
 }
 
-Kharej() {
+Iran() {
   clear
   first
   read -p "Enter Kharej Ip :" ip
