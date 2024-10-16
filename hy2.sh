@@ -124,6 +124,7 @@ socks5:
   listen: 127.0.0.1:$sport
 EOL
   final
+  ./hysteria-linux-amd64 -c client.yaml
 }
 
 while true; do
