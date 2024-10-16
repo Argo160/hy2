@@ -95,6 +95,7 @@ Kharej() {
   read -p "Enter obfs password :" obfspass
   read -p "Enter Authentication pass :" authpass
   read -p "Enter Socks5 port :" sport
+  
 cat <<EOL > client.yaml
 server: "$ip:$port"
 auth: "$authpass"
