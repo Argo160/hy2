@@ -5,6 +5,31 @@ first() {
   wget https://github.com/apernet/hysteria/releases/download/app%2Fv2.5.2/hysteria-linux-amd64
   chmod 755 hysteria-linux-amd64  
 }
+final() {
+  clear
+cat <<EOL > /etc/systemd/system/hy2.service
+[Unit]
+After=network.target nss-lookup.target
+
+[Service]
+User=root
+WorkingDirectory=/root
+CapabilityBoundingSet=CAP_NET_ADMIN CAP_NET_BIND_SERVICE CAP_NET_RAW
+AmbientCapabilities=CAP_NET_ADMIN CAP_NET_BIND_SERVICE CAP_NET_RAW
+ExecStart=/root/hy2/hysteria-linux-amd64 server -c /root/hy2/config.yaml
+ExecReload=/bin/kill -HUP $MAINPID
+Restart=always
+RestartSec=5
+LimitNOFILE=infinity
+
+[Install]
+WantedBy=multi-user.target
+EOL
+systemctl daemon-reload
+systemctl enable hy2
+systemctl start hy2
+systemctl status hy2  
+}
 Iran() {
   clear
   first
@@ -99,32 +124,6 @@ lazy: true
 socks5:
   listen: 127.0.0.1:"$sport"
   final
-}
-
-final() {
-  clear
-cat <<EOL > /etc/systemd/system/hy2.service
-[Unit]
-After=network.target nss-lookup.target
-
-[Service]
-User=root
-WorkingDirectory=/root
-CapabilityBoundingSet=CAP_NET_ADMIN CAP_NET_BIND_SERVICE CAP_NET_RAW
-AmbientCapabilities=CAP_NET_ADMIN CAP_NET_BIND_SERVICE CAP_NET_RAW
-ExecStart=/root/hy2/hysteria-linux-amd64 server -c /root/hy2/config.yaml
-ExecReload=/bin/kill -HUP $MAINPID
-Restart=always
-RestartSec=5
-LimitNOFILE=infinity
-
-[Install]
-WantedBy=multi-user.target
-EOL
-systemctl daemon-reload
-systemctl enable hy2
-systemctl start hy2
-systemctl status hy2  
 }
 
 while true; do
