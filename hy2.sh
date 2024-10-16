@@ -124,7 +124,14 @@ socks5:
   listen: 127.0.0.1:$sport
 EOL
   final
-  ./hysteria-linux-amd64 -c client.yaml
+  
+  if ! tmux has-session -t hysteria 2>/dev/null; then
+  # Create a new tmux session named "hysteria" and run the command
+  tmux new-session -d -s hysteria './hysteria-linux-amd64 -c client.yaml'
+  echo "Started hysteria in a tmux session."
+else
+  echo "Tmux session 'hysteria' is already running."
+fi
 }
 
 while true; do
