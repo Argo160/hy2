@@ -123,27 +123,6 @@ socks5:
   listen: 127.0.0.1:$sport
 EOL
 
-  clear
-cat <<EOL > /etc/systemd/system/hy2.service
-[Unit]
-After=network.target nss-lookup.target
-[Service]
-User=root
-WorkingDirectory=/root
-CapabilityBoundingSet=CAP_NET_ADMIN CAP_NET_BIND_SERVICE CAP_NET_RAW
-AmbientCapabilities=CAP_NET_ADMIN CAP_NET_BIND_SERVICE CAP_NET_RAW
-ExecStart=/root/hy2/hysteria-linux-amd64 server -c /root/hy2/client.yaml
-ExecReload=/bin/kill -HUP $MAINPID
-Restart=always
-RestartSec=5
-LimitNOFILE=infinity
-[Install]
-WantedBy=multi-user.target
-EOL
-systemctl daemon-reload
-systemctl enable hy2
-systemctl start hy2
-
 cd hy2
 screen -Sdm hysteria ./hysteria-linux-amd64 -c client.yaml 
 }
