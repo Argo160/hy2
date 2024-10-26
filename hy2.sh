@@ -123,8 +123,25 @@ socks5:
   listen: 127.0.0.1:$sport
 EOL
 
-cd hy2
-screen -Sdm hysteria ./hysteria-linux-amd64 -c client.yaml 
+cat <<EOL > /etc/systemd/system/hysteria.service
+[Unit]
+Description=Hysteria Client Service
+After=network.target
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/screen -dmS hysteria /root/hy2/hysteria-linux-amd64 -c /root/hy2/client.yaml
+Restart=always
+User=root  # Replace 'root' with your username if needed
+
+[Install]
+WantedBy=multi-user.target
+EOL
+  systemctl daemon-reload
+  systemctl enable hysteria.service
+  systemctl start hysteria.service
+  cd hy2
+  screen -Sdm hysteria ./hysteria-linux-amd64 -c client.yaml 
 }
 
 while true; do
